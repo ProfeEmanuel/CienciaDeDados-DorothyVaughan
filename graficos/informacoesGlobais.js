@@ -3,10 +3,10 @@ const url='https://raw.githubusercontent.com/silviosnjr/CienciaDeDados-CriandoGr
 async function vizualizarInformacoesGlobais() {
     const res = await fetch(url)
     const dados = await res.json()
-    const pessoasEmpregadas = (dados.total_pessoas_conectadas / 1e9)
+    const pessoasEmpregadas = (dados.total_pessoas_empregadas / 1e9) 
     const pessoasNoMundo = (dados.total_pessoas_mundo / 1e9)
-    const horas = parseInt(dados.tempo_medio)
-    const minutos = Math.round((dados.tempo_medio - horas) * 60)
+    const horas = parseInt(dados.tempo_medio_trabalho_por_semana) 
+    const minutos = Math.round((dados.tempo_medio_trabalho_por_semana - horas) * 60)
     const porcentagemPessoasEmpregadas = ((pessoasEmpregadas / pessoasNoMundo) * 100).toFixed(2);
 
     const pessoasSemEmprego = (pessoasNoMundo - pessoasEmpregadas)
